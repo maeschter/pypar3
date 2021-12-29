@@ -116,7 +116,7 @@ class Config():
                 f.write(doc.toprettyxml())
             #print(doc.toprettyxml())
         except (KeyError,ValueError,) as ex:
-            print('config write: key or value error:', ex.args[0])
+            print(_('config write: key or value error:', ex.args[0]))
 
 
     # Type conversions --------------------------

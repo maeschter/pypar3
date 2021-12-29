@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Author: G.Trauth
-# LastChange: 2021-12-02
-# Created: 2021-07-04
+# LastChange: 2021-12-20
+# Created: 2021-12-21
 #
 # This program is free software under the terms of the GNU General Public License,
 # either version 3 of the License, or (at your option) any later version.
@@ -12,13 +12,25 @@
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Library General Public License for more details.
+#
+# Directory structure of source project
+# /home/..../app/ executables (not used)
+#           /locale/ translations
+#           /src/ python
+#           /res/ icons, glade
+
+# Directory structure in SNAP package
+# $SNAP/bin/ executables
+#      /share/locale/ translations
+#      /share/pypyar3/src/ python
+#                    /res/ icons, glade
 
 import os.path
 
 # Application
-appVersion    = '1.0'
-appURL        = 'http://pypar3.org'      # TODO
-appID         = 'com.example.PyPar3'
+appVersion    = '0.1.0'
+appURL        = 'https://github.com/maeschter/pypar3'
+appID         = 'com.github.maeschter.pypar3'
 appName       = 'PyPar3'
 appNameShort  = 'pypar3'
 configVersion = 1
@@ -27,23 +39,32 @@ parFileExts   = ('.par2', '.PAR2')
 dialogApplyWidth  = 600
 dialogApplyHeight = 500
 
-# Directories
+# Directories SNAP / source project
+# SNAP: dirUsr = /home/user/snap/pypar3/x1, project: dirUsr = /home/user/pypar3
 dirUsr = os.path.expanduser('~')
 dirCfg = os.path.join(dirUsr, '.config/', appNameShort)
-dirSrc = os.path.join(os.path.dirname(__file__))
-dirRes = os.path.join(dirSrc, '..', 'res')
-dirPix = os.path.join(dirSrc, '..', 'pix')
-dirDoc = os.path.join(dirSrc, '..', 'doc')
 
-dirLocale = os.path.join(dirSrc, '..', 'locale')
-if not os.path.isdir(dirLocale):
-    dirLocale = os.path.join(dirSrc, '..', '..', 'locale')
+dirSrc = os.path.join(os.path.dirname(__file__))        # expecting .../src
+if dirSrc.endswith('src/'):
+    dirSrc = dirSrc.rstrip('/')
+
+if dirSrc.startswith('/home'):
+    dirPrj = dirSrc.rstrip('/src')
+    dirRes = os.path.join(dirPrj, 'res')
+    dirLoc = os.path.join(dirPrj, 'locale')
+else:
+    dirPrj = dirSrc.rstrip('pypar3/src')
+    dirRes = os.path.join(dirPrj, 'pypar3/res')
+    dirLoc = os.path.join(dirPrj, 'locale')
+
+print('dirCfg ', dirCfg)
+print('dirPrj ', dirPrj)
+print('dirRes ', dirRes)
+print('dirLoc ', dirLoc)
 
 # Files
 fileConfig   = os.path.join(dirCfg, appNameShort+'.xml')
-#fileLicense  = os.path.join(dirDoc, 'gpl3-0.txt')
-fileImgIcon  = os.path.join(dirPix, 'icon.png')
-fileImgAbout = os.path.join(dirPix, 'about.png')
+fileImgIcon  = os.path.join(dirRes, 'pypar3.png')
 
 # Create the configuration directory if needed
 if not os.path.isdir(dirCfg):

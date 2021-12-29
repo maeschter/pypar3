@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Author: G.Trauth
-# LastChange: 2021-12-02
+# LastChange: 2021-12-21
 # Created: 2021-07-04
 #
 # This program is free software under the terms of the GNU General Public License,
@@ -18,7 +18,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 from gettext import gettext as _
 import os.path, sys
-import consts, config, fileBox, dlgAbout, dlgApply
+import consts, config, fileBox, fileSelect, dlgAbout, dlgApply
 
 
 class Window(Gtk.ApplicationWindow):
@@ -32,8 +32,13 @@ class Window(Gtk.ApplicationWindow):
         # Builder object for window components-------
         self.builder = Gtk.Builder().new_from_file(os.path.join(consts.dirRes, 'win-main.glade'))
         self.builder.set_translation_domain(consts.appNameShort)
-
         self.mainWin = self.builder.get_object('appwin')
+
+        # Tab CHECK with file entry and file select button
+        self.tab0Frame0 = self.builder.get_object('ntbActionTab0Frm0')
+        self.chooser = fileSelect.FileSelect(self, self.conf)
+        self.tab0Frame0.add(self.chooser)
+
         # Tab CREATE with scrollable file listbox
         self.scrollWin = self.builder.get_object('ntbActionTab1ScrollWin')
         self.fileBox = fileBox.FileBox(self, self.conf)
@@ -54,7 +59,6 @@ class Window(Gtk.ApplicationWindow):
             'onButtonApply'          : self.onButtonApply,
             'onButtonDefault'        : self.onButtonDefault,
             'onNtbSwitchPage'        : self.onNtbSwitchPage,
-            'onNtbBtnParFiles'       : self.onButtonParFiles,
             'onRadBtnToggled'        : self.onRadButtons,
             'onSpinBtnChanged'       : self.onSpinButtons,
             'onChkButtonToggled'     : self.onChkButtons
@@ -64,7 +68,6 @@ class Window(Gtk.ApplicationWindow):
         # set configuration parameters to widgets
         # Before configuring the widgets all signal handlers must be established
         self.configureWidgets()
-        self.configureParFileDialog()
         
         # run dlgApply in repair/verify mode when command-line contains a par2 file
         #print('run cmdlind args', args)
@@ -83,7 +86,6 @@ class Window(Gtk.ApplicationWindow):
     def show(self):
         self.mainWin.show_all()
 
-
     # error message on incomplete command for CREATE
     def errorMessage(self):
         messDlg = Gtk.MessageDialog(
@@ -95,7 +97,6 @@ class Window(Gtk.ApplicationWindow):
         messDlg.format_secondary_text(_('Please select a least one file to protect'))
         messDlg.run()
         messDlg.destroy()
-            
 
     # Events ------------------------------------
     # App key release: ctrl+q closes the app
@@ -124,14 +125,15 @@ class Window(Gtk.ApplicationWindow):
 
     # Apply dialog ------------------------------
     # Perform action CHECK, VERIFY or CREATE
+    # The appropriate action is detemined by the command line
     def onButtonApply(self, button):
         # prepare commandline
         cmd = self.composeCmdLine()
         if cmd is not None:
-            wd = self.fileBox.getWorkDir() 
+            wd = self.conf.local['workDir']
+            print('onButtonApply workdir', wd)
             output = dlgApply.DialogApply(self, cmd, wd)
             output.show()
-    
 
     # Set default values ------------------------
     def onButtonDefault(self, button):
@@ -157,21 +159,7 @@ class Window(Gtk.ApplicationWindow):
                 self.builder.get_object('chkExtendedParams').set_active(False)
                 for i in pages:
                     self.builder.get_object('ntbParams').get_nth_page(i).hide()
-                self.builder.get_object('appBtnChooseFile').unselect_all()
             
-
-    # Notebook ntbAction file chooser button
-    # gets triggered on drop to button as well
-    def onButtonParFiles(self, button):
-        name = button.get_filename()
-        if name is not None:
-            self.conf.local['pathParFile'] = name
-            self.conf.local['workDir'] = os.path.dirname(name)
-        else:
-            self.conf.local['pathParFile'] = ''
-            self.conf.local['workDir'] = ''
-        #print('button open par2 file:', name, self.conf.local['pathParFile'])
-        
     
     # Each radioButton group with n buttons delivers n signals on toggle!
     def onRadButtons(self, button):
@@ -226,20 +214,10 @@ class Window(Gtk.ApplicationWindow):
             self.builder.get_object(chkBtn).set_active(self.conf.getParameter(chkBtn) == 'True')
 
 
-    # Configure PAR file open dialog ------------
-    def configureParFileDialog(self):
-        parFilter = Gtk.FileFilter()
-        parFilter.add_pattern(''.join(['*', consts.parFileExts[0]]))
-        parFilter.add_pattern(''.join(['*', consts.parFileExts[1]]))
-        chooser = self.builder.get_object('appBtnChooseFile')
-        chooser.set_filter(parFilter)
-        chooser.set_action(Gtk.FileChooserAction.OPEN)
-        chooser.set_show_hidden(False)
-    
-
     # Conmpose command line as list for repair/verify and for create
     # consider restrictions for particular parameter combinations
     def composeCmdLine(self):
+        cmdLine =''
         mem = '-m' + str(self.conf.getParameter('spnMemoryUsage'))
         extended = []
         if self.conf.local['chkExtendedParams']:
@@ -272,14 +250,14 @@ class Window(Gtk.ApplicationWindow):
             check = consts.cmdCheck[self.conf.getParameter('radGrpCheck')]
             parfile = self.conf.local['pathParFile']
             if parfile != '':
-                cmdLine = ['/usr/bin/par2', check, mem]
+                cmdLine = ['par2', check, mem]
                 cmdLine.append(''.join(['"',parfile,'"']))
             else:
                 cmdLine = None
                 self.errorMessage()
         else:
             # create
-            cmdLine = ['/usr/bin/par2 c', mem,] + extended
+            cmdLine = ['par2 c', mem,] + extended
             if self.fileBox.getParFileName() != '':
                 cmdLine.append(self.fileBox.getParFileName())
 

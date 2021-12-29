@@ -91,23 +91,7 @@
                     <property name="label-yalign">0</property>
                     <property name="shadow-type">out</property>
                     <child>
-                      <object class="GtkAlignment">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <child>
-                          <object class="GtkFileChooserButton" id="appBtnChooseFile">
-                            <property name="name">btnChooseFile</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="tooltip-text" translatable="yes">Select a par2 file  for Repair/Verify</property>
-                            <property name="margin-start">10</property>
-                            <property name="margin-end">10</property>
-                            <property name="margin-bottom">10</property>
-                            <property name="title" translatable="yes"/>
-                            <signal name="file-set" handler="onNtbBtnParFiles" swapped="no"/>
-                          </object>
-                        </child>
-                      </object>
+                      <placeholder/>
                     </child>
                     <child type="label">
                       <object class="GtkLabel" id="ntbActionTab0Lbl1">
@@ -115,7 +99,7 @@
                         <property name="can-focus">False</property>
                         <property name="margin-top">5</property>
                         <property name="margin-bottom">5</property>
-                        <property name="label" translatable="yes">Par2 files</property>
+                        <property name="label" translatable="yes">Par2 file</property>
                       </object>
                     </child>
                   </object>

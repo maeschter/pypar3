@@ -3,6 +3,9 @@
 
 src/__pycache__/*.*
 src/*.py~
+src/PyPar3.egg-info
 res/*.glade~
 po/*.sh~
 package/pypar3/**
+dist
+

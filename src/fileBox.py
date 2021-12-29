@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Author: G.Trauth
-# LastChange: 2021-12-02
+# LastChange: 2021-12-21
 # Created: 2021-07-04
 #
 # This program is free software under the terms of the GNU General Public License,
@@ -30,7 +30,7 @@ class DataListBoxRow(Gtk.ListBoxRow):
     def getData(self):
         return  self.data
 
-
+# Listbox for selecting files to protect, supports drag'n'drop
 class FileBox(Gtk.ListBox):
     def __init__(self, parent, config):
         super().__init__()
@@ -72,8 +72,8 @@ class FileBox(Gtk.ListBox):
         self.entry.drag_dest_set(Gtk.DestDefaults.ALL, [], Gdk.DragAction.COPY) #refuse drop
 
         # popover signals
-        handler = { 'onPopBtnClicked' : self.onPopBtnClicked,
-                    'onPopEntryEnter' : self.onPopEntryEnter
+        handler = { 'onPopBtnClicked' : self.onPopBtnClicked,   # buttons add/remove files or dir
+                    'onPopEntryEnter' : self.onPopEntryEnter    # par2 filename entered
                     }
         self.builder.connect_signals(handler)
 
@@ -125,6 +125,7 @@ class FileBox(Gtk.ListBox):
         else:
             # append extension to filename
             text = ''.join(['"', fn, '.par2"'])
+        #print('getParFileName', text)
         return  text
 
     # return list of files from listbox
@@ -148,18 +149,18 @@ class FileBox(Gtk.ListBox):
     def fileDialog(self, files=True):
         result = None
         if files:
-            dialog = Gtk.FileChooserDialog( title = 'Choose files',
+            dialog = Gtk.FileChooserDialog( title = _('Choose files'),
                                         parent = self.parent,
                                         action = Gtk.FileChooserAction.OPEN
                                         )
             dialog.set_select_multiple(True)
         else:
-            dialog = Gtk.FileChooserDialog( title = 'Choose directory',
+            dialog = Gtk.FileChooserDialog( title = _('Choose directory'),
                                         parent = self.parent,
                                         action = Gtk.FileChooserAction.SELECT_FOLDER 
                                         )
             dialog.set_select_multiple(False)
-
+        dialog.set_current_folder(consts.dirUsr)
         dialog.add_buttons( Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,
                             Gtk.STOCK_OPEN, Gtk.ResponseType.OK )
         response = dialog.run()

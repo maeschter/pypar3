@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Author: G.Trauth
-# LastChange: 2021-12-02
+# LastChange: 2021-12-21
 # Created: 2021-07-04
 #
 # This program is free software under the terms of the GNU General Public License,
@@ -16,7 +16,7 @@
 import  gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, GLib
-import sys, locale,gettext
+import sys, locale, gettext
 import mainWin, consts
 
 
@@ -29,11 +29,12 @@ class Application(Gtk.Application):
     # 1. startup application --------------------
     def do_startup(self):
         Gtk.Application.do_startup(self)
-        locale.setlocale(locale.LC_ALL, '')
+
+        # gettext.textdomain doesn't work with the GTK3 glade files
+        locale.bindtextdomain(consts.appNameShort, consts.dirLoc)
         locale.textdomain(consts.appNameShort)
-        locale.bindtextdomain(consts.appNameShort, consts.dirLocale)
-        gettext.textdomain(consts.appNameShort)
-        gettext.bindtextdomain(consts.appNameShort, consts.dirLocale)
+#        gettext.textdomain(consts.appNameShort)
+#        gettext.bindtextdomain(consts.appNameShort, consts.dirLoc)
 
     # 2. Gio.Application command line -----------
     # the command line supports one par file for check/repair
@@ -53,8 +54,13 @@ class Application(Gtk.Application):
         self.window.setNotebookPages()
 
 # Main program ------------------------------------------------------------------
-if __name__ == "__main__":
+def main():
     app = Application()
     app.run(sys.argv)
+    
 
+if __name__ == "__main__":
+    main()
+    
 # EOF -------------------------------------------------------------------------
+

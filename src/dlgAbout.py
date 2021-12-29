@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Author: G.Trauth
-# LastChange: 2021-12-02
+# LastChange: 2021-12-20
 # Created: 2021-07-04
 #
 # This program is free software under the terms of the GNU General Public License,
@@ -37,8 +37,8 @@ class DialogAbout(Gtk.AboutDialog):
 #        self.set_comments('PyPar3 is newly written using GTK3 but heavily inspired by François Ingelrest PyPar2')
         
         # Set logo
-        if os.path.exists(consts.fileImgAbout):
-            self.set_logo(Pixbuf.new_from_file(consts.fileImgAbout))
+        if os.path.exists(consts.fileImgIcon):
+            self.set_logo(Pixbuf.new_from_file(consts.fileImgIcon))
 
         # Display licence information
         self.set_license('This program is free software under the terms of the GNU General Public License,\n'
