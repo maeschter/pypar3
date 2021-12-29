@@ -1,0 +1,60 @@
+name: pypar3
+summary: Graphical front end for the par2 tool
+description: |
+  Graphical front end for the par2 tool using python3 and gtk3
+version: '0.1.0'
+
+license: GPL-3.0+
+
+base: core20
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+#architectures:
+#  - build-on: [amd64,i386]
+
+apps:
+    pypar3:                                     # used in pypar3.desktop also
+        command: bin/pypar3.sh
+        extensions: [gnome-3-38]                # pulls all GTK3 stuff
+        # Since the gnome-3-34 extension the file chooser portal
+        # replaces the plugs: [home, removable-media]
+
+#    par2:
+#        command: bin/par2                       # cmd line tool
+
+parts:
+    pypar3:
+        plugin: dump
+        source: app/
+        organize:
+            pypar3.sh: bin/pypar3.sh
+            par2: bin/par2
+            
+    pysource:
+        plugin: dump
+        source: src/
+        organize:
+            pypar3.py: share/pypar3/src/pypar3.py
+            config.py: share/pypar3/src/config.py
+            consts.py: share/pypar3/src/consts.py
+            dlgAbout.py: share/pypar3/src/dlgAbout.py
+            dlgApply.py: share/pypar3/src/dlgApply.py
+            fileBox.py: share/pypar3/src/fileBox.py
+            fileSelect.py: share/pypar3/src/fileSelect.py
+            mainWin.py: share/pypar3/src/mainWin.py
+
+    ui:
+        plugin: dump
+        source: res/
+        organize:
+            pypar3.png: share/pypar3/res/pypar3.png
+            pop-over.glade: share/pypar3/res/pop-over.glade
+            win-main.glade: share/pypar3/res/win-main.glade
+
+    translation:
+        plugin: dump
+        source: locale/
+        organize:
+            de/LC_MESSAGES/pypar3.mo: share/locale/de/LC_MESSAGES/pypar3.mo
+
+

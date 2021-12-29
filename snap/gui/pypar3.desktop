@@ -1,0 +1,17 @@
+
+[Desktop Entry]
+Type=Application
+Name=PyPar3
+Version=0.1.0
+Comment=Graphical front end for the par2 tool using python3 and gtk3
+Comment[de_DE]=Grafische Oberfläche für par2 mit Python3 und GTK3
+Comment[fr_FR]=Une interface graphique pour le programme par2
+Encoding=UTF-8
+
+#as used in pypar3.yaml
+Exec=pypar3
+#location of the icon after the snap is installed
+Icon=${SNAP}/meta/gui/pypar3.png
+Terminal=false
+Categories=Utility;GTK;
+StartupNotify=true
