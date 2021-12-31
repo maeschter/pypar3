@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Author: G.Trauth
-# LastChange: 2021-12-20
+# LastChange: 2021-12-31
 # Created: 2021-12-21
 #
 # This program is free software under the terms of the GNU General Public License,
@@ -42,6 +42,8 @@ dialogApplyHeight = 500
 # Directories SNAP / source project
 # SNAP: dirUsr = /home/user/snap/pypar3/x1, project: dirUsr = /home/user/pypar3
 dirUsr = os.path.expanduser('~')
+l = dirUsr.split('/')
+dirHome = os.path.join('/', l[1], l[2])
 dirCfg = os.path.join(dirUsr, '.config/', appNameShort)
 
 dirSrc = os.path.join(os.path.dirname(__file__))        # expecting .../src
@@ -57,10 +59,11 @@ else:
     dirRes = os.path.join(dirPrj, 'pypar3/res')
     dirLoc = os.path.join(dirPrj, 'locale')
 
-print('dirCfg ', dirCfg)
-print('dirPrj ', dirPrj)
-print('dirRes ', dirRes)
-print('dirLoc ', dirLoc)
+print('Home dir ', dirHome)
+print('Project dir ', dirPrj)
+#print('dirCfg ', dirCfg)
+#print('dirRes ', dirRes)
+#print('dirLoc ', dirLoc)
 
 # Files
 fileConfig   = os.path.join(dirCfg, appNameShort+'.xml')

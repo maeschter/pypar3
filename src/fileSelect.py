@@ -137,7 +137,7 @@ class FileSelect(Gtk.Box):
                                         )
         dialog.add_buttons( Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,
                                 Gtk.STOCK_OPEN, Gtk.ResponseType.OK )
-        dialog.set_current_folder(consts.dirUsr)
+        dialog.set_current_folder(consts.dirHome)
 
         response = dialog.run()
         if response == Gtk.ResponseType.OK:

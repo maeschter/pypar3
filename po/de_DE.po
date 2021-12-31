@@ -1,15 +1,15 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Maeschter, 2021-12-10
-# maeschter.imarca@github.com
+# Maeschter, 2021-12-31
+# maeschter.imarca@gmail.com
 #
-#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-26 11:14+0100\n"
+"POT-Creation-Date: 2021-12-31 12:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: maeschter <maeschter.imarca@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/config.py:60 src/config.py:69
+#: ../src/config.py:60 ../src/config.py:69
 msgid "config: key or value error"
 msgstr "config: Schlüssel oder Wert falsch"
 
-#: src/config.py:119
+#: ../src/config.py:119
 msgid "config write: key or value error:"
 msgstr "config schreiben: Schlüssel oder Wert falsch"
 
-#: src/config.py:128 src/config.py:138
+#: ../src/config.py:128 ../src/config.py:138
 msgid "config: type unsupported"
 msgstr "config: unbekannter Typ"
 
-#: src/dlgAbout.py:31
+#: ../src/dlgAbout.py:31
 msgid ""
 "A graphical interface for the par2 command line utility.\n"
 "PyPar3 is newly written using GTK3 but heavily inspired by François "
@@ -40,15 +40,15 @@ msgstr ""
 "PyPar3 ist mit GTK3 neu geschrieben und wurde stark beeinflusst von François "
 "Ingelrests PyPar2."
 
-#: src/dlgAbout.py:34
+#: ../src/dlgAbout.py:34
 msgid "Thanks to"
 msgstr "Dank an"
 
-#: src/dlgApply.py:50
+#: ../src/dlgApply.py:50
 msgid "Close"
 msgstr "Schließen"
 
-#: src/fileBox.py:50
+#: ../src/fileBox.py:50
 msgid ""
 "Files to protect.\n"
 "Note: all files in the listbox will be protected,\n"
@@ -64,184 +64,185 @@ msgstr ""
 "angegeben werden. Wenn nicht, legt PyPar3 den Namen fest.\n"
 "Alle Dateien müssen sich im gleichen Verzeichnis befinden."
 
-#: src/fileBox.py:152
+#: ../src/fileBox.py:152
 msgid "Choose files"
-msgstr ""
+msgstr "Wähle Dateien"
 
-#: src/fileBox.py:158
+#: ../src/fileBox.py:158
 msgid "Choose directory"
 msgstr "Wähle Verzeichnis"
 
-#: src/fileSelect.py:34
+#: ../src/fileSelect.py:50
 msgid "Select a par2 file for checking or repairing."
 msgstr "Wähle eine par2-Datei zum Prüfen oder Reparieren"
 
-#: src/fileSelect.py:116
+#: ../src/fileSelect.py:132
 msgid "Choose par2 file"
 msgstr "Wähle par2-Datei"
 
-#: src/mainWin.py:96
+#: ../src/mainWin.py:96
 msgid "File to protect missing"
 msgstr "Zu schützende Datei fehlt"
 
-#: src/mainWin.py:97
+#: ../src/mainWin.py:97
 msgid "Please select a least one file to protect"
 msgstr "Bitte wählen Sie mindestens eine Datei aus"
 
-#: res/win-main.glade:102
+#: ../res/win-main.glade:102
 msgid "Par2 file"
 msgstr "Par2-Datei"
 
-#: res/win-main.glade:136
+#: ../res/win-main.glade:136
 msgid "Repair file(s)"
 msgstr "Repariere Datei(en)"
 
-#: res/win-main.glade:141
+#: ../res/win-main.glade:141
 msgid "Verify  file(s) and then repair if needed"
 msgstr "Prüfe Dateien und repariere wenn erforderlich"
 
-#: res/win-main.glade:161
+#: ../res/win-main.glade:161
 msgid "Verify file(s)"
 msgstr "Prüfe Datei(en)"
 
-#: res/win-main.glade:166
+#: ../res/win-main.glade:166
 msgid "Verify files, but do not try to repair them"
 msgstr "Prüfe Datei(en), aber repariere sie nicht"
 
-#: res/win-main.glade:193
+#: ../res/win-main.glade:193
 msgid "Repair and Verify"
 msgstr "Prüfen und Reparieren"
 
-#: res/win-main.glade:209
+#: ../res/win-main.glade:209
 msgid "Check"
 msgstr "Prüfen"
 
-#: res/win-main.glade:234
+#: ../res/win-main.glade:234
 msgid "Create parity files for the selected files."
 msgstr "Erzeuge Paritäts-Dateien für die gewählten Dateien"
 
-#: res/win-main.glade:235
+#: ../res/win-main.glade:235
 msgid "Create"
 msgstr "Erzeugen"
 
-#: res/win-main.glade:299
+#: ../res/win-main.glade:299
 msgid "Maximum memory usage (MB)"
 msgstr "Maximal möglicher Speicherverbrauch (MB)"
 
-#: res/win-main.glade:302
+#: ../res/win-main.glade:302
 msgid "Max. memory use (MB)"
 msgstr "Einschränkung des Speicherverbrauchs (MB)"
 
-#: res/win-main.glade:341
+#: ../res/win-main.glade:341
 msgid "Memory"
 msgstr "Speicher"
 
-#: res/win-main.glade:357
+#: ../res/win-main.glade:357
 msgid "Dynamic"
 msgstr "Dynamisch"
 
-#: res/win-main.glade:363
+#: ../res/win-main.glade:363
 msgid ""
 "Dynamic computation of the number of blocks the files will be sliced into"
 msgstr "Dynamische Berechnung der Blockzahl zur Einteilung der Datei"
 
-#: res/win-main.glade:377
+#: ../res/win-main.glade:377
 msgid "Block count"
 msgstr "Blockzahl"
 
-#: res/win-main.glade:383
+#: ../res/win-main.glade:383
 msgid "Number of blocks the files will be sliced into"
 msgstr "Anzahl der Blöcke zur Einteilung der Datei"
 
-#: res/win-main.glade:398
+#: ../res/win-main.glade:398
 msgid "Block size (KB)"
 msgstr "Blockgröße (KB)"
 
-#: res/win-main.glade:404
+#: ../res/win-main.glade:404
 msgid "Size of the blocks the files will be sliced into"
 msgstr "Größe der Blöcke zur Einteilung der Datei"
 
-#: res/win-main.glade:467
+#: ../res/win-main.glade:467
 msgid "Blocks"
 msgstr "Blöcke"
 
-#: res/win-main.glade:484
+#: ../res/win-main.glade:484
 msgid "Redundancy Level (%)"
 msgstr "Höhe der Redundanz (%)"
 
-#: res/win-main.glade:490
+#: ../res/win-main.glade:490
 msgid "Level of redundancy of the parity files in percent"
 msgstr "Höhe der Redundanz in (%) in den Paritäts-Dateien"
 
-#: res/win-main.glade:504
+#: ../res/win-main.glade:504
 msgid "Recovery block count"
 msgstr "Zahl der Wiederherstellungsblöcke"
 
-#: res/win-main.glade:509
+#: ../res/win-main.glade:509
 msgid "Number of recovery blocks in the parity files"
 msgstr "Zahl der Wiederherstellungsblöcke in den Paritäts-Dateien"
 
-#: res/win-main.glade:569
+#: ../res/win-main.glade:569
 msgid "Redundancy"
 msgstr "Redundanz"
 
-#: res/win-main.glade:586
+#: ../res/win-main.glade:586
 msgid "Limit size of PAR2 files"
 msgstr "Größenbegrenzung der Paritäts-Dateien"
 
-#: res/win-main.glade:591
+#: ../res/win-main.glade:591
 msgid "Dynamic computation of the number of parity files"
 msgstr "Dynamische Berechnung der Anzahl der Paritäts-Dateien"
 
-#: res/win-main.glade:605
+#: ../res/win-main.glade:605
 msgid "PAR2 files count"
 msgstr "Anzahl der Paritäts-Dateien"
 
-#: res/win-main.glade:610
+#: ../res/win-main.glade:610
 msgid "Number of parity files"
 msgstr "Anzahl der Paritäts-Dateien"
 
-#: res/win-main.glade:643
+#: ../res/win-main.glade:643
 msgid "Uniform PAR2 file size"
 msgstr "Gleiche Größe der Paritäts-Dateien"
 
-#: res/win-main.glade:648
+#: ../res/win-main.glade:648
 msgid "Force all parity files to be of the same size"
 msgstr "Erzwinge gleiche Größe der Paritäts-Dateien"
 
-#: res/win-main.glade:675
+#: ../res/win-main.glade:675
 msgid "Parity files"
 msgstr "Paritäts-Dateien"
 
-#: res/win-main.glade:695
+#: ../res/win-main.glade:695
 msgid "First recovery block in the parity files"
 msgstr "Erster Wiederherstellungsblock in den Paritäts-Dateien"
 
-#: res/win-main.glade:698
+#: ../res/win-main.glade:698
 msgid "First recovery block"
 msgstr "Erster Wiederherstellungsblock"
 
-#: res/win-main.glade:760
+#: ../res/win-main.glade:760
 msgid "Beginning"
 msgstr "Beginn"
 
-#: res/win-main.glade:782
+#: ../res/win-main.glade:782
 msgid "Use extended parameters"
 msgstr "Verwende erweiterte Parameter"
 
-#: res/win-main.glade:787
+#: ../res/win-main.glade:787
 msgid ""
 "Use extended parameters Blocks, Redundancy, Parity and Beginning.\\n This is "
 "for experienced users only."
 msgstr ""
-"Verwende erweiterte Paramete 'Blöcke', 'Redundanz', 'Parität' und Beginn.\n"
+"Verwende erweiterte Parameter 'Blöcke', 'Redundanz', 'Parität' und "
+"'Beginn'.\n"
 "Dies ist nur für erfahrene Nutzer."
 
-#: res/win-main.glade:802
+#: ../res/win-main.glade:802
 msgid "Set default values"
 msgstr "Verwende Standardwerte"
 
-#: res/win-main.glade:807
+#: ../res/win-main.glade:807
 msgid ""
 "Restore the default values of all settings.\n"
 "Use this if you are not shure how to handle extended settings."
@@ -250,59 +251,58 @@ msgstr ""
 "Verwenden Sie dies, wenn Sie im Gebrauch der erweiterten Parameter\n"
 "nicht sicher sind."
 
-#: res/win-main.glade:838
+#: ../res/win-main.glade:838
 msgid "Info"
 msgstr "Info"
 
-#: res/win-main.glade:844
+#: ../res/win-main.glade:844
 msgid "About PyPar3"
 msgstr "Über PyPar3"
 
-#: res/win-main.glade:857
+#: ../res/win-main.glade:857
 msgid "Quit"
 msgstr "Beenden"
 
-#: res/win-main.glade:863
+#: ../res/win-main.glade:863
 msgid "Close PyPar3"
 msgstr "Schließe PyPar3"
 
-#: res/win-main.glade:901
+#: ../res/win-main.glade:901
 msgid "Apply"
 msgstr "Anwenden"
 
-#: res/win-main.glade:907
+#: ../res/win-main.glade:907
 msgid "Repair/verify files or create new parity files"
 msgstr "Repariere/prüfe Dateien order erzeuge neue Paritäts-Dateien"
 
-#: res/pop-over.glade:19
+#: ../res/pop-over.glade:19
 msgid "Add files"
 msgstr "Dateien hinzufügen"
 
-#: res/pop-over.glade:24
+#: ../res/pop-over.glade:24
 msgid "Add files to list"
 msgstr "Füge Dateien in der Liste hinzu"
 
-#: res/pop-over.glade:34
+#: ../res/pop-over.glade:34
 msgid "Add dir content"
 msgstr "Verzeichnisinhalt hinzufügen"
 
-#: res/pop-over.glade:39
+#: ../res/pop-over.glade:39
 msgid "Add all files of a dir to list"
 msgstr "Füge die Dateien eines Ordners in der Liste hinzu"
 
-#: res/pop-over.glade:49
+#: ../res/pop-over.glade:49
 msgid "Remove selected files"
 msgstr "Entferne markierte Dateien"
 
-#: res/pop-over.glade:63
+#: ../res/pop-over.glade:63
 msgid "Remove all files"
 msgstr "Entferne alle Dateien"
 
-#: res/pop-over.glade:80
+#: ../res/pop-over.glade:80
 msgid "Please insert a name for the par2-files"
 msgstr "Bitte geben Sie einen Namen für die par2-Dateien an"
 
-#: res/pop-over.glade:81
+#: ../res/pop-over.glade:81
 msgid "name of par2-file"
 msgstr "Name für die par2-Dateien"
-

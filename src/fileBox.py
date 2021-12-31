@@ -160,7 +160,7 @@ class FileBox(Gtk.ListBox):
                                         action = Gtk.FileChooserAction.SELECT_FOLDER 
                                         )
             dialog.set_select_multiple(False)
-        dialog.set_current_folder(consts.dirUsr)
+        dialog.set_current_folder(consts.dirHome)
         dialog.add_buttons( Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,
                             Gtk.STOCK_OPEN, Gtk.ResponseType.OK )
         response = dialog.run()

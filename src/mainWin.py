@@ -35,9 +35,9 @@ class Window(Gtk.ApplicationWindow):
         self.mainWin = self.builder.get_object('appwin')
 
         # Tab CHECK with file entry and file select button
-        self.tab0Frame0 = self.builder.get_object('ntbActionTab0Frm0')
+        self.selectFrame = self.builder.get_object('ntbActionTab0Frm0')
         self.chooser = fileSelect.FileSelect(self, self.conf)
-        self.tab0Frame0.add(self.chooser)
+        self.selectFrame.add(self.chooser)
 
         # Tab CREATE with scrollable file listbox
         self.scrollWin = self.builder.get_object('ntbActionTab1ScrollWin')
